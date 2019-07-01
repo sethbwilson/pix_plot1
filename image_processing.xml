@@ -1,0 +1,20 @@
+<tool id="image_processing" name="Image processing for pix plot distribution" version="0.1.0" python_template_version="2.7">
+    <requirements>
+        <requirement type="package">conda</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python /home/ubuntu/pix-plot/utils/process_images.py #for $input in $inputs# $input #end for#
+    ]]></command>
+    <inputs>
+        <param type="data" name="inputs" format="jpg" multiple="True" label="Select images for processing" />
+    </inputs>
+    <outputs>
+       	<data name="plot_data" format="json" />
+	<data name='Atlas files' format='jpg' />
+	<data name='image_vectors' format= 'jpg' />
+	<data name='thumbs' format='jpg' /> 
+    </outputs>
+    <help><![CDATA[
+        This tool processes images in .jpg format, and creates thumbnails and eventually stores the relative vector distances in a json file that is used to display the distances on a local web server. 
+    ]]></help>
+</tool>
